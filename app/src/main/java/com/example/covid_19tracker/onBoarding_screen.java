@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -22,17 +23,21 @@ public class onBoarding_screen extends AppCompatActivity {
     LinearLayout dotsLayout;
     ImageView Next_btn_onboarding;
     public TextView[] dots;
+    preferenceManager prefManager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_boarding_screen);
-
+        prefManager = new preferenceManager(this,"Handle_onboarding");
 
         viewPager = findViewById(R.id.viewpager);
         dotsLayout = findViewById(R.id.dotsLayout);
         Next_btn_onboarding = findViewById(R.id.Next_btn_onboarding);
+
+
+
 
         List<model_item_onboarding> listItem = new ArrayList<>();
         listItem.add(new model_item_onboarding(R.drawable.covidwelcomescreen,"Welcome to COVID Tracker","Stay informed and healthy with our real-time COVID insights."));
@@ -70,8 +75,10 @@ public class onBoarding_screen extends AppCompatActivity {
                             viewPager.setCurrentItem(position + 1, true);
                         }
                         else {
+                            prefManager.setFirstTimeLaunch(1);
                             Intent intent = new Intent(onBoarding_screen.this,MainActivity.class);
                             startActivity(intent);
+                            finish();
                         }
                     }
                 });
