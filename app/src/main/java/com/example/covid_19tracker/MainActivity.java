@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void LoadFragments(Fragment fragment, boolean flag){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         if (flag) {
             fragmentTransaction.add(R.id.container, fragment);
         }
