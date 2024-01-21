@@ -22,6 +22,7 @@
             android:layout_height="100dp"
             android:scaleType="centerCrop"
             android:padding="10dp"
+
             android:background="@drawable/flag_stroke"
             android:src="@drawable/pk"/>
         <TextView
